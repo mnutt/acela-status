@@ -15,6 +15,12 @@ function time(dateString) {
 }
 
 (async () => {
+  console.log('');
+  console.log(`===================================================================`);
+  console.log(`Fetching ACELA Trains from ${origin} to ${dest} on ${day}:`);
+  console.log(`===================================================================`);
+  console.log('');
+
   const response = await fetch(url, {
     method: 'GET',
     headers: { referer }
@@ -44,7 +50,7 @@ function time(dateString) {
   // Create a table
   const table = new Table({
     head: ['Train Number', 'Status', 'Departure Time', 'Arrival Time', 'Message'],
-    colWidths: [15, 13, 17, 15, 30]
+    colWidths: [14, 11, 17, 15, 26]
   });
 
   // Add rows to the table
@@ -57,12 +63,6 @@ function time(dateString) {
       train.Message
     ]);
   });
-
-  console.log('');
-  console.log(`========================================================================`);
-  console.log(`ACELA Trains from ${origin} to ${dest} on ${day}:`);
-  console.log(`========================================================================`);
-  console.log('');
 
   // Display the table
   console.log(table.toString());
